@@ -37,6 +37,7 @@ public class Cli {
         this.registry.register("create", new CreateCommand());
         this.registry.register("open", new OpenCommand());
         this.registry.register("list", new ListCommand());
+        this.registry.register("edit", new EditCommand());
         this.registry.register("delete", new DeleteCommand());
         this.registry.register("help", new HelpCommand(this.registry));
         this.registry.register("exit", new ExitCommand());
