@@ -13,8 +13,11 @@ jobs:
           distribution: 'oracle'
           cache: 'maven'
       
-      - name: Clean and compile
-        run: mvn clean compile
+      - name: Clean
+        run: mvn clean
+
+      - name: Compile
+        run: mvn compile
   
   test:
     runs-on: ubuntu-latest
