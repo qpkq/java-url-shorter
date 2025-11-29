@@ -5,15 +5,31 @@ import com.qpkq.core.models.UserLink;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class LinkServiceTest {
 
+    private static final Path ENV_PATH = Paths.get(".env");
+
     private LinkService linkService;
     private User user;
+
+    @BeforeEach
+    void createTestEnv() throws IOException {
+        Files.write(ENV_PATH, List.of(
+                "BASE_URL=http://localhost:8080",
+                "LINK_TTL_HOURS=1",
+                "DATABASE_URL=jdbc:h2:mem:test"
+        ));
+    }
 
     @BeforeEach
     void setup() {
